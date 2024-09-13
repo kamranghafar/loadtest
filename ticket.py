@@ -83,7 +83,7 @@ class BeelinksUser(HttpUser):
 
         try:
             # Open the login page
-            self.driver.get(configuration_system.url)
+            self.driver.get(configuration_system.loadtestURL)
             self.logger.info(f"Opened URL: {self.driver.current_url}")
 
             # Wait for the body to load to ensure the page is fully loaded
