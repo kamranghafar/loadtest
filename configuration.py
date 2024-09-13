@@ -21,5 +21,5 @@ class configuration_system:
     select_browser = "edge"
     headless_option = "false"
     loadtestURL = "https://testapp.beelinks.solutions"
-    driver_location = 'C:/Users/DAY USER/PycharmProjects/beelinks-automation/chromedriver.exe'
-    excel_file = 'C:/Users/DAY USER/PycharmProjects/beelinks-automation/users.xlsx'
+    driver_location = 'C:/Users/DAY USER/PycharmProjects/loadtest/chromedriver.exe'
+    excel_file = 'C:/Users/DAY USER/PycharmProjects/loadtest/users.xlsx'
