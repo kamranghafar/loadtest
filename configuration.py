@@ -1,25 +1,5 @@
 class configuration_system:
-    url = "https://staging.beelinks.solutions/"
-    chaturl ="https://stagingwindow.beelinks.solutions/"
-    email = "qa.bizzchats@gmail.com"
-    password = "12345678"
-    agentemail = "shahzaib.hussaini99@gmail.com"
-    agentpassword = "12345678"
-    agenturl = "https://staging.beelinks.solutions/agents"
-    newagetemail = "diaz@gmail.com"
-    newagentpassword = "NewPassword1234"
-    screenshot = True
-    report = False
-    Prod_URl = "https://www.sbtjapan.com/"
-    webhook_url = "https://hulhub2.webhook.office.com/webhookb2/ddb52dda-66af-4d7f-a9c7-83683d8746ca@26521256-a7de-4702-a9f8-eace52025924/IncomingWebhook/9324409e882945178e9e72694a7a35cb/ae996ba4-1839-42f7-a024-a875284e262e"
-    webhook_url_pipeline = ("https://hulhub2.webhook.office.com/webhookb2/ec104d34-c23b-4411-ac1b-bd9eece0be36@26521256-a7de-4702-a9f8-eace52025924/IncomingWebhook/9ea5a3748bc541078d45cff3d07cb24d/2e881a04-1de6-47c1-bdce-8bfb2b47c128")
-    webhook_url_pipeline = "https://hulhub2.webhook.office.com/webhookb2/ec104d34-c23b-4411-ac1b-bd9eece0be36@26521256-a7de-4702-a9f8-eace52025924/IncomingWebhook/9ea5a3748bc541078d45cff3d07cb24d/2e881a04-1de6-47c1-bdce-8bfb2b47c128"
-    app_beelink_url = "https://app.beelinks.solutions/"
-    app_email = "sbtinquiries@sbtjapan.com"
-    app_password = "cP,8#K^.148!"
-    Healthcheck_URL = "https://hulhub2.webhook.office.com/webhookb2/ec104d34-c23b-4411-ac1b-bd9eece0be36@26521256-a7de-4702-a9f8-eace52025924/IncomingWebhook/88ec377df8ea476782df3d729d63e258/ae996ba4-1839-42f7-a024-a875284e262e"
-    select_browser = "edge"
-    headless_option = "false"
+
     loadtestURL = "https://testapp.beelinks.solutions"
     driver_location = 'C:/Users/DAY USER/PycharmProjects/loadtest/chromedriver.exe'
     excel_file = 'C:/Users/DAY USER/PycharmProjects/loadtest/users.xlsx'

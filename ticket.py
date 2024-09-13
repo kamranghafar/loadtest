@@ -34,7 +34,7 @@ class BeelinksUser(HttpUser):
 
     def get_unique_user(self):
         # Load users from Excel and filter out used ones
-        users = self.load_users_from_excel('C:/Users/DAY USER/PycharmProjects/beelinks-automation/users.xlsx')
+        users = self.load_users_from_excel(configuration_system.excel_file)
         available_users = [user for user in users if user['email'] not in self.used_users]
 
         if not available_users:
