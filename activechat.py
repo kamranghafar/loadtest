@@ -6,7 +6,7 @@ from selenium.webdriver.chrome.options import Options as ChromeOptions
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.common.by import By
-from selenium.common.exceptions import TimeoutException, WebDriverException
+from selenium.common.exceptions import TimeoutException, WebDriverException, NoSuchElementException
 import urllib3
 import time
 import logging
@@ -53,7 +53,7 @@ class BeelinksUser(HttpUser):
 
         # Select browser and headless option
         browser = "chrome"  # Assuming you're using Chrome here, adjust as necessary
-        headless = True  # Replace with configuration system's headless selection logic
+        headless = False  # Replace with configuration system's headless selection logic
 
         try:
             if browser == "chrome":
@@ -122,18 +122,35 @@ class BeelinksUser(HttpUser):
             raise
 
     @task
-    def login_test(self):
+    def accept_chat(self):
         start_time = time.time()
         try:
             # Wait for the tickets link and click it
-            self.logger.info("agent chat activated...")
-            WebDriverWait(self.driver, 120).until(
-                EC.presence_of_element_located((By.XPATH, '//li[@id="nav-tickets"]/a'))
-            ).click()
+            self.logger.info("accepting chat...")
+
+            # Try clicking the avatar (proceed if not found)
+            try:
+                WebDriverWait(self.driver, 30).until(
+                    EC.presence_of_element_located((By.XPATH,
+                                                    "//div[contains(@class, 'avatar') and contains(@class, 'ava-xs') and contains(@class, 'b-2')]"))
+                ).click()
+                self.logger.info("Avatar found and clicked.")
+            except (TimeoutException, NoSuchElementException) as e:
+                self.logger.warning(f"Avatar not found: {e}. Proceeding without clicking it.")
+
+            # Try clicking the 'Not Accepting Chats' checkbox (proceed if not found)
+            try:
+                WebDriverWait(self.driver, 30).until(
+                    EC.presence_of_element_located(
+                        (By.XPATH, "//a[@title='Not Accepting Chats']//input[@type='checkbox']"))
+                ).click()
+                self.logger.info("Checkbox found and clicked.")
+            except (TimeoutException, NoSuchElementException) as e:
+                self.logger.warning(f"Checkbox not found: {e}. Proceeding without clicking it.")
 
             # Measure response time
-            time.sleep(5)
-            self.driver.refresh()
+            # time.sleep(5)
+            # self.driver.refresh()
             response_time = (time.time() - start_time) * 1000
 
             self.environment.events.request.fire(
@@ -143,7 +160,7 @@ class BeelinksUser(HttpUser):
                 response_length=0,
                 exception=None
             )
-            self.logger.info("Successfully navigated to Tickets.")
+            self.logger.info("Successfully activated chat.")
 
         except TimeoutException as e:
             self.logger.error(f"TimeoutException occurred: {e}")
