@@ -148,6 +148,16 @@ class BeelinksUser(HttpUser):
             except (TimeoutException, NoSuchElementException) as e:
                 self.logger.warning(f"Checkbox not found: {e}. Proceeding without clicking it.")
 
+                # Try clicking the 'Tickets' checkbox (proceed if not found)
+                try:
+                    WebDriverWait(self.driver, 30).until(
+                        EC.presence_of_element_located(
+                            (By.XPATH, '//li[@id="nav-tickets"]/a'))
+                    ).click()
+                    self.logger.info("Ticket button found and clicked.")
+                except (TimeoutException, NoSuchElementException) as e:
+                    self.logger.warning(f"Ticket button not found: {e}. Proceeding without clicking it.")
+
             # Measure response time
             # time.sleep(5)
             # self.driver.refresh()
