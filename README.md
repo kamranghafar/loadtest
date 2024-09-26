@@ -5,5 +5,3 @@ pip install openpyxl
 pip install pandas
 ```
 Host: https://testapp.beelinks.solutions
-
-
