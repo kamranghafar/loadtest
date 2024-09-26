@@ -33,7 +33,7 @@ class BeelinksUser(HttpUser):
     def initialize_browser(self):
         """Initializes the Selenium WebDriver."""
         browser = "chrome"
-        headless = False  # Replace with configuration system's headless selection logic
+        headless = True  # Replace with configuration system's headless selection logic
 
         try:
             if browser == "chrome":

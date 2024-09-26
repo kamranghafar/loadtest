@@ -53,7 +53,7 @@ class BeelinksUser(HttpUser):
 
         # Select browser and headless option
         browser = "chrome"  # Assuming you're using Chrome here, adjust as necessary
-        headless = False  # Replace with configuration system's headless selection logic
+        headless = True  # Replace with configuration system's headless selection logic
 
         try:
             if browser == "chrome":
